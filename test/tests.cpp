@@ -1,8 +1,8 @@
 // Copyright 2021 GHA Test Team
 
-#include <cstdint>
-#include <gmock/gmock.h>
 #include <gtest/gtest.h>
+#include <gmock/gmock.h>
+#include <cstdint>
 #include "TimedDoor.h"
 
 using ::testing::_;
@@ -10,25 +10,25 @@ using ::testing::Return;
 using ::testing::Throw;
 
 class MockDoor : public Door {
-public:
+ public:
   MOCK_METHOD(void, lock, (), (override));
   MOCK_METHOD(void, unlock, (), (override));
   MOCK_METHOD(bool, isDoorOpened, (), (override));
 };
 
 class MockTimerClient : public TimerClient {
-public:
+ public:
   MOCK_METHOD(void, Timeout, (), (override));
 };
 
 class MockTimer : public Timer {
-public:
+ public:
   MOCK_METHOD(void, tregister, (int, TimerClient *), ());
   MOCK_METHOD(void, sleep, (int), ());
 };
 
 class TimedDoorTest : public ::testing::Test {
-protected:
+ protected:
   void SetUp() override { door = new TimedDoor(1000); }
 
   void TearDown() override { delete door; }
