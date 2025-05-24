@@ -50,3 +50,4 @@ class Timer {
 };
 
 #endif  // INCLUDE_TIMEDDOOR_H_
+
